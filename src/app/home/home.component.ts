@@ -12,15 +12,17 @@ import { User } from '../shared/models/user.model';
 })
 export class HomeComponent implements OnInit {
   currentUser: User;
+  homeContent: string;
 
   constructor(
     private authService: AuthService,
     private httpService: HttpService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.currentUser = this.authService.currentUser;
-    // this.httpService.
+
+    this.homeContent = await this.httpService.getData<string>('home');
   }
 
   signOut(): void {
