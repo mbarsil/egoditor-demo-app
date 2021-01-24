@@ -13,9 +13,14 @@ const TOKEN_STORAGE_KEY = 'userToken';
 })
 export class AuthService {
   private _currentUser: User;
+  private _token: string;
 
   get currentUser(): User {
-    return this._currentUser;
+    return this._currentUser || JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY))._currentUser;
+  }
+
+  get token(): string {
+    return this._token || JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY))._token;
   }
 
   constructor(

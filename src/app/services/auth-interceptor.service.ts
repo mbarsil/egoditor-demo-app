@@ -18,7 +18,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     }
 
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.authService.currentUser.token}`
+      Authorization: `Bearer ${this.authService.token}`
     });
 
     req = req.clone({ headers });
