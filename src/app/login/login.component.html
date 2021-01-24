@@ -11,7 +11,7 @@
           <input
             matInput
             required
-            formControlName="userName"
+            formControlName="username"
             placeholder="User name"
             autocomplete="off" />
         </mat-form-field>
@@ -19,6 +19,7 @@
           <input
             matInput
             required
+            type="password"
             formControlName="password"
             placeholder="Password"
             autocomplete="off" />
@@ -27,7 +28,11 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LOGIN</button>
+      <button
+        mat-button
+        (click)="signIn()">
+        LOGIN
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
