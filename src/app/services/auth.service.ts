@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+import { environment } from '../../environments/environment';
+
 import { UserCredentials, UserToken } from '../shared/interfaces/shared.interface';
 import { User } from '../shared/models/user.model';
-import { BACKEND_HOST } from '../shared/constants/shared.constant';
 
 const TOKEN_STORAGE_KEY = 'userToken';
 
@@ -43,7 +44,8 @@ export class AuthService {
 
   async signIn(credentials: UserCredentials): Promise<void> {
     try {
-      const userToken: UserToken = (await this.http.post(`${BACKEND_HOST}auth/signin`, credentials).toPromise()) as UserToken;
+      const userToken: UserToken = (await this.http.post(`${environment.backendHost}auth/signin`, credentials).toPromise()) as UserToken;
+
       this._currentUser = new User(credentials.username, userToken.accessToken);
 
       this.saveTokenToStorage();

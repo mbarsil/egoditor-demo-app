@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { throwError } from 'rxjs';
 
-import { BACKEND_HOST } from '../shared/constants/shared.constant';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class HttpService {
 
   async getData<T>(entity: string): Promise<T> {
     try {
-      return await this.http.get<T>(`${BACKEND_HOST}${entity}`).toPromise();
+      return await this.http.get<T>(`${environment.backendHost}${entity}`).toPromise();
     } catch (e) {
       throwError(e);
     }
