@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static('www'));
+app.use(express.static('dist/egoditor-demo-app'));
 
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), () => {
